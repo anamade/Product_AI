@@ -1,0 +1,23 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#000000" />
+
+  <!-- Define styles -->
+  <style>
+    .text-white { font-family: 'Arial', sans-serif; font-size: 32px; fill: #ffffff; font-weight: bold; }
+    .text-blue { font-family: 'Arial', sans-serif; font-size: 32px; fill: #007bff; font-weight: bold; }
+  </style>
+
+  <!-- Graphic Element (Left) -->
+  <!-- Circle -->
+  <circle cx="70" cy="100" r="20" fill="#007bff" />
+  <!-- Diagonal Bar -->
+  <!-- Adjusted coordinates to fit the circle and create the dynamic feel -->
+  <rect x="55" y="115" width="40" height="8" fill="#007bff" transform="rotate(-45 75 119)" />
+
+  <!-- Text Element (Center/Right) -->
+  <g transform="translate(120, 108)">
+    <text x="0" y="0" class="text-white">Product</text>
+    <text x="115" y="0" class="text-blue">IO</text>
+  </g>
+</svg>
