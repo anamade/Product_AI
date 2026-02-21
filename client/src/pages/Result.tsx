@@ -24,8 +24,8 @@ const Result = () => {
   }
 
   return (
-    <div className="min-h-screen text-white p-6 md:p-12 pt-32">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen text-white pt-32 pb-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Back button */}
         <button onClick={() => navigate('/my-generations')} className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition mb-8">
           <ArrowLeftIcon className="size-4" />
