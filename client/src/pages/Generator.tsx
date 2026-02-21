@@ -26,6 +26,7 @@ const Generator = () => {
     setModelImage(nextFile);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleClear = (type: 'product' | 'model') => {
     if (type === 'product') {
       setProductImage(null);

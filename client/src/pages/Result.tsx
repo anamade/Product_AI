@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Project } from '../types';
 import { dummyGenerations } from '../assets/assets';
-import { Loader2Icon, RefreshCwIcon } from 'lucide-react';
+import { ImageIcon, Loader2Icon, RefreshCwIcon, SparkleIcon, VideoIcon } from 'lucide-react';
+import { GhostButton, PrimaryButton } from '../components/Buttons';
 
 const Result = () => {
   const [project, setProjectData] = useState<Project>({} as Project);
   const [loading, setLoading] = useState(true);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const fetchProjectData = () => {
     const timer = setTimeout(() => {
@@ -15,6 +17,10 @@ const Result = () => {
     }, 3000);
 
     return () => clearTimeout(timer);
+  };
+
+  const handleGenerateVideo = async () => {
+    setIsGenerating(true);
   };
 
   useEffect(() => {
@@ -57,7 +63,39 @@ const Result = () => {
           {/* {Sidebar Actions} */}
           <div className="space-y-6">
             {/* {Download Button} */}
-            <div></div>
+            <div className="glass-panel p-6 rounded-2xl">
+              <h3 className="text-xl font-semibold mb-4">Actions</h3>
+              <div className="flex flex-col gap-3">
+                <a href={project.generatedImage} download>
+                  <GhostButton disabled={!project.generatedImage} className="w-full justify-center rounded-md py-3 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <ImageIcon className="size-4.5" />
+                    Download Image
+                  </GhostButton>
+                </a>
+                <a href={project.generatedVideo} download>
+                  <GhostButton disabled={!project.generatedVideo} className="w-full justify-center rounded-md py-3 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <VideoIcon className="size-4.5" />
+                    Download Video
+                  </GhostButton>
+                </a>
+              </div>
+            </div>
+            {/* {Generate Video Button} */}
+            <div className="glass-panel p-6 rounded-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10">
+                <VideoIcon className="size-24" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Video Magic</h3>
+              <p className="text-gray-400 text-sm mb-6">Turn this static image into a dynamic video for social media.</p>
+              {!project.generatedVideo ? (
+                <PrimaryButton onClick={handleGenerateVideo} disabled={isGenerating} className="w-full">
+                  <SparkleIcon className="size-4" />
+                  Generate Video
+                </PrimaryButton>
+              ) : (
+                <div className="bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 text-center text-sm font-medium py-3 px-4">Video generated successfully!</div>
+              )}
+            </div>
           </div>
         </div>
       </div>
